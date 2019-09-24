@@ -2,7 +2,7 @@ backend:
   name: github
   repo: tbayet/hitzakGridsome
 
-media_folder: "src/assets/uploads"
+media_folder: "static/uploads"
 public_folder: "/uploads"
 
 collections:
