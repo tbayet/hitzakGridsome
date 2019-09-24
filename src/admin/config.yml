@@ -2,7 +2,7 @@ backend:
   name: github
   repo: tbayet/hitzakGridsome
 
-media_folder: "static/uploads"
+media_folder: "src/assets/uploads"
 public_folder: "/uploads"
 
 collections:
@@ -38,7 +38,7 @@ collections:
     identifier_field: name
     fields:
       - {label: "Name", name: "name", widget: "string"}
-      - {label: "Text", name: "text", widget: "markdown"}
+      - {label: "Text", name: "body", widget: "markdown"}
       - {label: "Order", name: "order", widget: "number", valueType: "int", default: 3}
 
   - name: "albums"

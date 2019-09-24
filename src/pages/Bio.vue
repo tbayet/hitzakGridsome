@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <v-layout row wrap>
+    <v-row wrap>
       <v-flex xs8 offset-xs2>
         <p>
           Hitzak - words in Basque - is a Paris-based musical collective featuring
@@ -11,21 +11,37 @@
         </p><br />
       </v-flex>
       <v-flex
-        v-for="card in members"
+        v-for="edge in $page.members.edges"
         xs12
-        v-bind="{ [`md${card.flex}`]: true}"
-        :key="card.name"
+        v-bind="{ [`md${edge.node.order >= 3 ? 4 : 6}`]: true}"
+        :key="edge.node.name"
+        class="pa-2"
       >
         <Card
-          :image="card.avatar"
-          :height="card.flex == 6 ? '450px' : '350px'"
-          :title="card.name"
-          :subtitle="card.job"
+          :image="edge.node.picture"
+          :height="edge.node.order >= 3 ? '350px' : '450px'"
+          :title="edge.node.name"
+          :subtitle="edge.node.role"
         ></Card>
       </v-flex>
-    </v-layout>
+    </v-row>
   </Layout>
 </template>
+
+<page-query>
+query Members {
+  members: allMember(sortBy: "order", order: ASC) {
+    edges {
+      node {
+        name,
+        role,
+        picture,
+        order
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 import Card from '../components/Card'
@@ -36,72 +52,6 @@ export default {
   },
   metaInfo: {
     title: 'Bio'
-  },
-  data () {
-    return {
-      members: [
-        {
-          flex: 6,
-          name: 'Alex',
-          avatar: '/photos/members/alex.png',
-          job: 'Guitar / Composition'
-        },
-        {
-          flex: 6,
-          name: 'Stuart',
-          avatar: '/photos/members/stuart.png',
-          job: 'Voice / Writing',
-        },
-        {
-          flex: 4,
-          name: 'Guillaume',
-          avatar: '/photos/members/guillaume.png',
-          job: 'Keyboard / Saxo',
-        },
-        {
-          flex: 4,
-          name: 'Antoine',
-          avatar: '/photos/members/antoine.png',
-          job: 'Violin'
-        },
-        {
-          flex: 4,
-          name: 'Amélie',
-          avatar: '/photos/members/amelie.png',
-          job: 'Accordion',
-        },
-        {
-          flex: 4,
-          name: 'Clémentine',
-          avatar: '/photos/members/clementine.png',
-          job: 'Vocals'
-        },
-        {
-          flex: 4,
-          name: 'Alexandra',
-          avatar: '/photos/members/alexandra.png',
-          job: 'Vocals',
-        },
-        {
-          flex: 4,
-          name: 'Stéphane',
-          avatar: '/photos/members/stephane.png',
-          job: 'Double bass'
-        },
-        {
-          flex: 4,
-          name: 'Mathieu',
-          avatar: '/photos/members/mathieu.png',
-          job: 'Percussions'
-        },
-        {
-          flex: 4,
-          name: 'Thomas',
-          avatar: '/photos/members/thomas.png',
-          job: 'Cajon',
-        }
-      ]
-    }
-  },
+  }
 }
 </script>

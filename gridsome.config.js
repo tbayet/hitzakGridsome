@@ -6,6 +6,9 @@
 
 module.exports = {
   siteName: 'Hitzak',
+  icon: {
+    favicon: './src/favicon.png',
+  },
   transformers: {
     remark: {
       externalLinksTarget: '_blank',
@@ -21,12 +24,18 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        path: 'posts/**/*.md',
-        typeName: 'Post',
+        path: 'members/*.md',
+        typeName: 'Member',
         remark: {
-          plugins: [
-            // ...local plugins
-          ]
+        }
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'lyrics/*.md',
+        typeName: 'Lyric',
+        remark: {
         }
       }
     },

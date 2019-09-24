@@ -2,18 +2,32 @@
   <Layout>
     <v-row justify="center">
       <v-flex xs11 md8 class="mt-12">
-        <Book></Book>
+        <Book :pages="$page.lyrics.edges"></Book>
       </v-flex>
     </v-row>
   </Layout>
 </template>
+
+<page-query>
+query Lyrics {
+  lyrics: allLyric(sortBy: "order", order: ASC) {
+    edges {
+      node {
+        name,
+        content,
+        order
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 import Book from '~/components/Book.vue'
 
 export default {
   metaInfo: {
-    title: 'Dates'
+    title: 'Lyrics'
   },
   components: {
     Book
