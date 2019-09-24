@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: tbayet/hitzakGridsome
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "members"
+    label: "Members"
+    folder: "members"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Order", name: "order", widget: "number", valueType: "int", default: 3}
+      - {label: "Role", name: "role", widget: "string"}
+      - {label: "Picture", name: "picture", widget: "image"}
+
+  - name: "dates"
+    label: "Dates"
+    folder: "dates"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Place", name: "place", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YY-MM-DD"}
+      - {label: "Link", name: "link", widget: "string", required: false}
+
+  - name: "lyrics"
+    label: "Lyrics"
+    folder: "lyrics"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Text", name: "text", widget: "markdown"}
+      - {label: "Order", name: "order", widget: "number", valueType: "int", default: 3}
+
+  - name: "albums"
+    label: "Albums"
+    folder: "albums"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: name
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Photos", name: "photos", widget: "image"}
