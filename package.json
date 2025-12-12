@@ -14,7 +14,7 @@
     "gridsome-plugin-netlify-cms": "^1.0.9",
     "jquery": "^3.4.1",
     "netlify-cms": "^2.9.7",
-    "vuetify": "^2.0.18"
+    "vuetify": "^3.0.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.11.1",
